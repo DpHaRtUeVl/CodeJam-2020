@@ -1,0 +1,33 @@
+testcase=int(input())
+str_Main=[]
+for i in range(testcase):
+    str1=input()
+    str_Main.append(str1)
+for i in range(testcase):
+    y=0
+    sub_str=list(str_Main[i])
+    while y<(len(sub_str)-1):
+        z=int(sub_str[y])-int(sub_str[y+1])
+        if z>0:
+            w=1
+            while w!=(z+1):
+                sub_str.insert(y+w,')')
+                w=w+1
+        elif z<0:
+            w=1
+            while w!=(abs(z)+1):
+                sub_str.insert(y+w,'(')
+                w=w+1
+        y=y+abs(z)
+        y=y+1
+    a=int(sub_str[0])
+    b=int(sub_str[-1])
+    while a!=0:
+        sub_str.insert(0,'(')
+        a=a-1
+    while b!=0:
+        sub_str.append(')')
+        b=b-1
+    str_Main[i]="".join(sub_str)
+for i in range(len(str_Main)):
+    print("case #"+str(i+1)+": "+str_Main[i])
